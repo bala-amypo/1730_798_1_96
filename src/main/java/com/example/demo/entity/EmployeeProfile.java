@@ -56,6 +56,4 @@ public class EmployeeProfile {
     public EmployeeProfile() {
         this.createdAt = LocalDateTime.now();
         this.active = true;
-    }
-
-    
+    }   

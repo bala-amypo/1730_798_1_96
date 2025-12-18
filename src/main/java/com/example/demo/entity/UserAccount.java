@@ -24,7 +24,7 @@ public class UserAccount {
     private String email;
 
     @NotBlank
-    private String password; // hashed
+    private String password; 
 
     @NotBlank
     private String role;
@@ -33,5 +33,5 @@ public class UserAccount {
     @JoinColumn(name = "employee_profile_id")
     private EmployeeProfile employeeProfile;
 
-    // Constructors, getters, setters...
+    
 }
