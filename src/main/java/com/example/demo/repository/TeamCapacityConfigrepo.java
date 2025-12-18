@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface TeamCapacityConfigRepo extends JpaRepository<TeamCapacityConfig, Long> {
+public interface TeamCapacityConfigRepository extends JpaRepository<TeamCapacityConfig, Long> {
 
     Optional<TeamCapacityConfig> findByTeamName(String teamName);
 }
