@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
        uniqueConstraints = {
            @UniqueConstraint(columnNames = "teamName")
        })
-public class TeamCapacityConfig {
+public class TeamCapacityRule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
