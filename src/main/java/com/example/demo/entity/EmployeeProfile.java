@@ -40,10 +40,6 @@ public class EmployeeProfile {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    /**
-     * Self-referencing Many-to-Many relationship
-     * Colleagues of the same organization
-     */
     @ManyToMany
     @JoinTable(
         name = "employee_colleagues",
@@ -52,9 +48,6 @@ public class EmployeeProfile {
     )
     private Set<EmployeeProfile> colleagues = new HashSet<>();
 
-    /* ==========================
-       Lifecycle Callbacks
-       ========================== */
 
     @PrePersist
     protected void onCreate() {
