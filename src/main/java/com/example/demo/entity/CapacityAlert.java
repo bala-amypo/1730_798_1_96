@@ -25,6 +25,7 @@ public class CapacityAlert {
 
     @NotBlank
     private String message;
+    
 
    
 }
