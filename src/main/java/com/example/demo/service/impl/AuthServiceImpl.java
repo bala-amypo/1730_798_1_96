@@ -2,7 +2,6 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.AuthResponse;
-import com.example.demo.security.JwtService;
 import com.example.demo.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,8 +14,7 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
-
+    
     @Override
     public AuthResponse login(AuthRequest request) {
 
@@ -27,7 +25,6 @@ public class AuthServiceImpl implements AuthService {
                 )
         );
 
-        String token = jwtService.generateToken(authentication.getName());
 
         return new AuthResponse(token);
     }
