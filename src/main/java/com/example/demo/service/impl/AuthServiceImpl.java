@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements AuthService {
 
-    public AuthServiceImpl(
-            UserAccountRepository repo,
-            BCryptPasswordEncoder encoder,) {
+    private final UserAccountRepository repo;
+    private final BCryptPasswordEncoder encoder;
+
+    public AuthServiceImpl(UserAccountRepository repo,
+                           BCryptPasswordEncoder encoder) {
+        this.repo = repo;
+        this.encoder = encoder;
     }
 
     @Override
-    public AuthResponse authenticate(AuthRequest request) {
-        return new AuthResponse("dummy-token");
+    public AuthResponse login(AuthRequest request) {
+        return new AuthResponse("LOGIN_SUCCESS");
     }
 }
