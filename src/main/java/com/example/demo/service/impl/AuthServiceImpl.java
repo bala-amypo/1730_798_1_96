@@ -2,25 +2,33 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.AuthResponse;
-import com.example.demo.repository.UserAccountRepository;
+import com.example.demo.security.JwtService;
 import com.example.demo.service.AuthService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private final UserAccountRepository repo;
-    private final BCryptPasswordEncoder encoder;
-
-    public AuthServiceImpl(UserAccountRepository repo,
-                           BCryptPasswordEncoder encoder) {
-        this.repo = repo;
-        this.encoder = encoder;
-    }
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     @Override
     public AuthResponse login(AuthRequest request) {
-        return new AuthResponse("LOGIN_SUCCESS");
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getUsername(),
+                        request.getPassword()
+                )
+        );
+
+        String token = jwtService.generateToken(authentication.getName());
+
+        return new AuthResponse(token);
     }
 }
