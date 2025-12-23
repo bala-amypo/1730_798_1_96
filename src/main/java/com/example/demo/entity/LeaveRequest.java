@@ -1,15 +1,16 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "leave_requests")
+@Data
 public class LeaveRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @ManyToOne
     private EmployeeProfile employee;
@@ -19,6 +20,4 @@ public class LeaveRequest {
     private String type;
     private String status;
     private String reason;
-
-   
 }
