@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class LeaveRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     private EmployeeProfile employee;
