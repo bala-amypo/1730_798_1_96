@@ -1,3 +1,8 @@
+# First, restore from backup if you have it
+cp pom.xml.backup pom.xml 2>/dev/null || true
+
+# Create a clean, correct pom.xml
+cat > pom.xml << 'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -34,7 +39,14 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         
-        <!-- H2 Database - Will override MySQL config automatically -->
+        <!-- MySQL Connector - REQUIRED for your application.properties -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+        
+        <!-- H2 Database -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -89,3 +101,4 @@
         </plugins>
     </build>
 </project>
+EOF
