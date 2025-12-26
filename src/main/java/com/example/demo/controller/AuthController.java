@@ -1,20 +1,24 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import com.example.demo.dto.AuthRequest;
-// import com.example.demo.dto.AuthResponse;
-// import com.example.demo.service.AuthService;
-// import lombok.RequiredArgsConstructor;
-// import org.springframework.web.bind.annotation.*;
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.service.AuthService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-// @RestController
-// @RequestMapping("/auth")
-// @RequiredArgsConstructor
-// public class AuthController {
-
-//     private final AuthService authService;
-
-//     @PostMapping("/login")
-//     public AuthResponse login(@RequestBody AuthRequest request) {
-//         return authService.login(request);
-//     }
-// }
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+    
+    private final AuthService authService;
+    
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> authenticate(@RequestBody AuthRequest request) {
+        AuthResponse response = authService.authenticate(request);
+        return ResponseEntity.ok(response);
+    }
+}
