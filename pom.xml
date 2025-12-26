@@ -86,7 +86,7 @@
             <scope>test</scope>
         </dependency>
         
-        <!-- Dotenv for .env file support -->
+        <!-- Dotenv for .env file support - KEEPING THE DEPENDENCY BUT REMOVING THE PLUGIN -->
         <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
@@ -100,25 +100,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            
-            <!-- Dotenv Maven Plugin - UPDATED VERSION -->
-            <plugin>
-                <groupId>io.github.cdimascio</groupId>
-                <artifactId>dotenv-maven-plugin</artifactId>
-                <version>5.1.0</version> <!-- CHANGED FROM 1.3.0 to 5.1.0 -->
-                <executions>
-                    <execution>
-                        <id>load-dotenv</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <envFile>.env</envFile>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             
             <!-- Compiler Plugin -->
