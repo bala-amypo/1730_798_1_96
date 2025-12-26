@@ -23,7 +23,6 @@
         <java.version>17</java.version>
     </properties>
 
-    <!-- ================= DEPENDENCIES ================= -->
     <dependencies>
 
         <!-- Spring Boot Web -->
