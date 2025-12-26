@@ -1,7 +1,7 @@
-# First, restore from backup if you have it
-cp pom.xml.backup pom.xml 2>/dev/null || true
+# Show first few lines of pom.xml
+head -5 pom.xml
 
-# Create a clean, correct pom.xml
+# Create a clean pom.xml
 cat > pom.xml << 'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -39,21 +39,17 @@ cat > pom.xml << 'EOF'
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         
-        <!-- MySQL Connector - REQUIRED for your application.properties -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>8.0.33</version>
         </dependency>
         
-        <!-- H2 Database -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
         
-        <!-- JWT -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -72,7 +68,6 @@ cat > pom.xml << 'EOF'
             <scope>runtime</scope>
         </dependency>
         
-        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
