@@ -92,32 +92,26 @@
 
     </dependencies>
 
-    <build>
+    
+karishma s
+9:25 AM
+<build>
         <plugins>
-
-            <!-- ✅ Explicit main class -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.example.demo.DemoApplication</mainClass>
-                </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.0.0</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-testng</artifactId>
-                        <version>3.2.5</version>
+                        <version>3.0.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
-
         </plugins>
     </build>
-
-</project>
