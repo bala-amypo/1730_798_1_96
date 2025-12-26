@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long> {
 
-    // Find overlapping approved leaves for a team
     @Query(
         SELECT lr FROM LeaveRequest lr
         WHERE lr.employee.teamName = :teamName
@@ -27,7 +26,6 @@ public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long
             @Param("endDate") LocalDate endDate
     );
 
-    // Find all leave requests for a specific employee
     List<LeaveRequest> findByEmployee(EmployeeProfile employee);
 
 }
