@@ -98,9 +98,8 @@
                     <groupId>org.projectlombok</groupId>
                     <artifactId>lombok</artifactId>
                     <version>1.18.32</version>
-    <scope>provided</scope>
-</dependency>
-
+                    <scope>provided</scope>
+               </dependency>
             </plugin>
         </plugins>
     </build>
