@@ -1,17 +1,30 @@
-// package com.example.demo.model;
+package com.example.demo.model;
 
-// import jakarta.persistence.*;
-// import lombok.Data;
+import jakarta.persistence.*;
 
-// @Entity
-// @Data
-// public class TeamCapacityConfig {
-
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
-
-//     private String teamName;
-//     private int totalHeadcount;
-//     private int minCapacityPercent;
-// }
+@Entity
+@Table(name = "team_capacity_configs")
+public class TeamCapacityConfig {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(unique = true, nullable = false)
+    private String teamName;
+    
+    @Column(nullable = false)
+    private int totalHeadcount;
+    
+    @Column(nullable = false)
+    private int minCapacityPercent;
+    
+    // Getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTeamName() { return teamName; }
+    public void setTeamName(String teamName) { this.teamName = teamName; }
+    public int getTotalHeadcount() { return totalHeadcount; }
+    public void setTotalHeadcount(int totalHeadcount) { this.totalHeadcount = totalHeadcount; }
+    public int getMinCapacityPercent() { return minCapacityPercent; }
+    public void setMinCapacityPercent(int minCapacityPercent) { this.minCapacityPercent = minCapacityPercent; }
+}
