@@ -1,4 +1,13 @@
-cd /home/coder/Workspace/demo && cat > pom.xml << 'EOF'
+cd /home/coder/Workspace/demo
+
+# First, check what's actually in the file
+head -c 100 pom.xml
+
+# Fix it by removing any characters before <?xml
+sed -i '1s/^[^<]*//' pom.xml
+
+# Or better, recreate it properly
+cat > pom.xml << 'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -35,14 +44,14 @@ cd /home/coder/Workspace/demo && cat > pom.xml << 'EOF'
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         
-        <!-- MySQL Connector - Required for your application.properties -->
+        <!-- MySQL Connector -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
         </dependency>
         
-        <!-- H2 Database - For local development -->
+        <!-- H2 Database -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -93,7 +102,7 @@ cd /home/coder/Workspace/demo && cat > pom.xml << 'EOF'
             <scope>test</scope>
         </dependency>
         
-        <!-- Dotenv for .env file support -->
+        <!-- Dotenv -->
         <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
@@ -120,7 +129,7 @@ cd /home/coder/Workspace/demo && cat > pom.xml << 'EOF'
                 </configuration>
             </plugin>
             
-            <!-- Surefire Plugin for TestNG - UPDATED CONFIGURATION -->
+            <!-- Surefire Plugin for TestNG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -130,7 +139,6 @@ cd /home/coder/Workspace/demo && cat > pom.xml << 'EOF'
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <useSystemClassLoader>false</useSystemClassLoader>
-                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
