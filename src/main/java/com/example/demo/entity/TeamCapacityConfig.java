@@ -1,17 +1,17 @@
-package com.example.demo.model;
+// package com.example.demo.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
+// import jakarta.persistence.*;
+// import lombok.Data;
 
-@Entity
-@Data
-public class TeamCapacityConfig {
+// @Entity
+// @Data
+// public class TeamCapacityConfig {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    private String teamName;
-    private int totalHeadcount;
-    private int minCapacityPercent;
-}
+//     private String teamName;
+//     private int totalHeadcount;
+//     private int minCapacityPercent;
+// }

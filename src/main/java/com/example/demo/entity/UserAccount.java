@@ -1,24 +1,24 @@
-package com.example.demo.model;
+// package com.example.demo.model;
 
-import jakarta.persistence.*;
+// import jakarta.persistence.*;
 
-@Entity
-@Table(name = "user_accounts")
-public class UserAccount {
+// @Entity
+// @Table(name = "user_accounts")
+// public class UserAccount {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    private String username;
+//     private String username;
 
-    @Column(unique = true)
-    private String email;
+//     @Column(unique = true)
+//     private String email;
 
-    private String password;
-    private String role;
+//     private String password;
+//     private String role;
 
-    @OneToOne
-    private EmployeeProfile employeeProfile;
+//     @OneToOne
+//     private EmployeeProfile employeeProfile;
 
-}
+// }

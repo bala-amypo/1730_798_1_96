@@ -1,99 +1,99 @@
-package com.example.demo.service.impl;
+// package com.example.demo.service.impl;
 
-import com.example.demo.dto.LeaveRequestDto;
-import com.example.demo.exception.BadRequestException;
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.EmployeeProfile;
-import com.example.demo.model.LeaveRequest;
-import com.example.demo.repository.EmployeeProfileRepository;
-import com.example.demo.repository.LeaveRequestRepository;
-import com.example.demo.service.LeaveRequestService;
-import org.springframework.stereotype.Service;
+// import com.example.demo.dto.LeaveRequestDto;
+// import com.example.demo.exception.BadRequestException;
+// import com.example.demo.exception.ResourceNotFoundException;
+// import com.example.demo.model.EmployeeProfile;
+// import com.example.demo.model.LeaveRequest;
+// import com.example.demo.repository.EmployeeProfileRepository;
+// import com.example.demo.repository.LeaveRequestRepository;
+// import com.example.demo.service.LeaveRequestService;
+// import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
+// import java.time.LocalDate;
+// import java.util.List;
+// import java.util.stream.Collectors;
 
-@Service
-public class LeaveRequestServiceImpl implements LeaveRequestService {
+// @Service
+// public class LeaveRequestServiceImpl implements LeaveRequestService {
 
-    private final LeaveRequestRepository leaveRepo;
-    private final EmployeeProfileRepository employeeRepo;
+//     private final LeaveRequestRepository leaveRepo;
+//     private final EmployeeProfileRepository employeeRepo;
 
-    public LeaveRequestServiceImpl(
-            LeaveRequestRepository leaveRepo,
-            EmployeeProfileRepository employeeRepo) {
-        this.leaveRepo = leaveRepo;
-        this.employeeRepo = employeeRepo;
-    }
+//     public LeaveRequestServiceImpl(
+//             LeaveRequestRepository leaveRepo,
+//             EmployeeProfileRepository employeeRepo) {
+//         this.leaveRepo = leaveRepo;
+//         this.employeeRepo = employeeRepo;
+//     }
 
-    @Override
-    public LeaveRequestDto create(LeaveRequestDto dto) {
-        if (dto.startDate.isAfter(dto.endDate)) {
-            throw new BadRequestException("Start date is invalid");
-        }
+//     @Override
+//     public LeaveRequestDto create(LeaveRequestDto dto) {
+//         if (dto.startDate.isAfter(dto.endDate)) {
+//             throw new BadRequestException("Start date is invalid");
+//         }
 
-        EmployeeProfile emp = employeeRepo.findAll().stream()
-                .filter(e -> e.getEmployeeId().equals(dto.employeeId))
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+//         EmployeeProfile emp = employeeRepo.findAll().stream()
+//                 .filter(e -> e.getEmployeeId().equals(dto.employeeId))
+//                 .findFirst()
+//                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
 
-        LeaveRequest lr = new LeaveRequest();
-        lr.setEmployee(emp);
-        lr.setStartDate(dto.startDate);
-        lr.setEndDate(dto.endDate);
-        lr.setType(dto.type);
-        lr.setStatus("PENDING");
-        lr.setReason(dto.reason);
+//         LeaveRequest lr = new LeaveRequest();
+//         lr.setEmployee(emp);
+//         lr.setStartDate(dto.startDate);
+//         lr.setEndDate(dto.endDate);
+//         lr.setType(dto.type);
+//         lr.setStatus("PENDING");
+//         lr.setReason(dto.reason);
 
-        leaveRepo.save(lr);
-        dto.id = lr.getId();
-        return dto;
-    }
+//         leaveRepo.save(lr);
+//         dto.id = lr.getId();
+//         return dto;
+//     }
 
-    @Override
-    public LeaveRequestDto approve(Long id) {
-        LeaveRequest lr = leaveRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Leave not found"));
-        lr.setStatus("APPROVED");
-        leaveRepo.save(lr);
-        return map(lr);
-    }
+//     @Override
+//     public LeaveRequestDto approve(Long id) {
+//         LeaveRequest lr = leaveRepo.findById(id)
+//                 .orElseThrow(() -> new ResourceNotFoundException("Leave not found"));
+//         lr.setStatus("APPROVED");
+//         leaveRepo.save(lr);
+//         return map(lr);
+//     }
 
-    @Override
-    public LeaveRequestDto reject(Long id) {
-        LeaveRequest lr = leaveRepo.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Leave not found"));
-        lr.setStatus("REJECTED");
-        leaveRepo.save(lr);
-        return map(lr);
-    }
+//     @Override
+//     public LeaveRequestDto reject(Long id) {
+//         LeaveRequest lr = leaveRepo.findById(id)
+//                 .orElseThrow(() -> new ResourceNotFoundException("Leave not found"));
+//         lr.setStatus("REJECTED");
+//         leaveRepo.save(lr);
+//         return map(lr);
+//     }
 
-    @Override
-    public List<LeaveRequestDto> getByEmployee(Long employeeId) {
-        EmployeeProfile emp = employeeRepo.findById(employeeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
-        return leaveRepo.findByEmployee(emp)
-                .stream().map(this::map).collect(Collectors.toList());
-    }
+//     @Override
+//     public List<LeaveRequestDto> getByEmployee(Long employeeId) {
+//         EmployeeProfile emp = employeeRepo.findById(employeeId)
+//                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+//         return leaveRepo.findByEmployee(emp)
+//                 .stream().map(this::map).collect(Collectors.toList());
+//     }
 
-    @Override
-    public List<LeaveRequestDto> getOverlappingForTeam(
-            String teamName, LocalDate start, LocalDate end) {
-        return leaveRepo
-                .findApprovedOverlappingForTeam(teamName, start, end)
-                .stream().map(this::map).collect(Collectors.toList());
-    }
+//     @Override
+//     public List<LeaveRequestDto> getOverlappingForTeam(
+//             String teamName, LocalDate start, LocalDate end) {
+//         return leaveRepo
+//                 .findApprovedOverlappingForTeam(teamName, start, end)
+//                 .stream().map(this::map).collect(Collectors.toList());
+//     }
 
-    private LeaveRequestDto map(LeaveRequest lr) {
-        LeaveRequestDto dto = new LeaveRequestDto();
-        dto.id = lr.getId();
-        dto.employeeId = lr.getEmployee().getEmployeeId();
-        dto.startDate = lr.getStartDate();
-        dto.endDate = lr.getEndDate();
-        dto.status = lr.getStatus();
-        dto.type = lr.getType();
-        dto.reason = lr.getReason();
-        return dto;
-    }
-}
+//     private LeaveRequestDto map(LeaveRequest lr) {
+//         LeaveRequestDto dto = new LeaveRequestDto();
+//         dto.id = lr.getId();
+//         dto.employeeId = lr.getEmployee().getEmployeeId();
+//         dto.startDate = lr.getStartDate();
+//         dto.endDate = lr.getEndDate();
+//         dto.status = lr.getStatus();
+//         dto.type = lr.getType();
+//         dto.reason = lr.getReason();
+//         return dto;
+//     }
+// }
