@@ -1,28 +1,28 @@
-package com.example.demo.controller;
+// package com.example.demo.controller;
 
-import com.example.demo.dto.CapacityAnalysisResultDto;
-import com.example.demo.service.CapacityAnalysisService;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.*;
+// import com.example.demo.dto.CapacityAnalysisResultDto;
+// import com.example.demo.service.CapacityAnalysisService;
+// import io.swagger.v3.oas.annotations.tags.Tag;
+// import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+// import java.time.LocalDate;
 
-@RestController
-@RequestMapping("/api/capacity-alerts")
-@Tag(name = "Capacity Alerts")
-public class CapacityAlertController {
+// @RestController
+// @RequestMapping("/api/capacity-alerts")
+// @Tag(name = "Capacity Alerts")
+// public class CapacityAlertController {
 
-    private final CapacityAnalysisService service;
+//     private final CapacityAnalysisService service;
 
-    public CapacityAlertController(CapacityAnalysisService service) {
-        this.service = service;
-    }
+//     public CapacityAlertController(CapacityAnalysisService service) {
+//         this.service = service;
+//     }
 
-    @PostMapping("/analyze")
-    public CapacityAnalysisResultDto analyze(
-            @RequestParam String teamName,
-            @RequestParam LocalDate start,
-            @RequestParam LocalDate end) {
-        return service.analyzeTeamCapacity(teamName, start, end);
-    }
-}
+//     @PostMapping("/analyze")
+//     public CapacityAnalysisResultDto analyze(
+//             @RequestParam String teamName,
+//             @RequestParam LocalDate start,
+//             @RequestParam LocalDate end) {
+//         return service.analyzeTeamCapacity(teamName, start, end);
+//     }
+// }
