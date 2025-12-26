@@ -14,11 +14,11 @@ import java.util.List;
 public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long> {
 
     @Query(
-        SELECT lr FROM LeaveRequest lr
-        WHERE lr.employee.teamName = :teamName
-          AND lr.status = 'APPROVED'
-          AND lr.startDate <= :endDate
-          AND lr.endDate >= :startDate
+        "SELECT lr FROM LeaveRequest lr " +
+        "WHERE lr.employee.teamName = :teamName " +
+        "AND lr.status = 'APPROVED' " +
+        "AND lr.startDate <= :endDate " +
+        "AND lr.endDate >= :startDate"
     )
     List<LeaveRequest> findApprovedOverlappingForTeam(
             @Param("teamName") String teamName,
@@ -27,5 +27,4 @@ public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long
     );
 
     List<LeaveRequest> findByEmployee(EmployeeProfile employee);
-
 }
