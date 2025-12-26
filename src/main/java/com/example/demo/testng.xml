@@ -1,98 +1,11 @@
+cd /home/coder/Workspace/demo
+cat > testng.xml << 'EOF'
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="LeaveOverlapTeamCapacityAnalyzer Test Suite">
+<suite name="Leave Overlap Team Capacity Analyzer Test Suite">
     <test name="All Tests">
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-            <!-- Add other test classes here if you have them -->
-        </classes>
-    </test>
-    
-    <!-- You can also organize tests by groups -->
-    <test name="Servlet Tests">
-        <groups>
-            <run>
-                <include name="servlet"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="CRUD Tests">
-        <groups>
-            <run>
-                <include name="crud"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="DI Tests">
-        <groups>
-            <run>
-                <include name="di"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="Hibernate Tests">
-        <groups>
-            <run>
-                <include name="hibernate"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="JPA Tests">
-        <groups>
-            <run>
-                <include name="jpa"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="ManyToMany Tests">
-        <groups>
-            <run>
-                <include name="manyToMany"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="Security Tests">
-        <groups>
-            <run>
-                <include name="security"/>
-            </run>
-        </groups>
-        <classes>
-            <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
-        </classes>
-    </test>
-    
-    <test name="HQL Tests">
-        <groups>
-            <run>
-                <include name="hql"/>
-            </run>
-        </groups>
         <classes>
             <class name="com.example.demo.LeaveOverlapTeamCapacityAnalyzerTest"/>
         </classes>
     </test>
 </suite>
+EOF
