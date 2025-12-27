@@ -21,7 +21,8 @@
     <properties>
         <java.version>17</java.version>
     </properties>
-
+    
+<!-- 
     <dependencies>
 
         <!-- Web -->
@@ -110,7 +111,7 @@
     <scope>test</scope>
 </dependency>
 
-    </dependencies>
+    </dependencies> -->
 
     <!-- <build>
         <plugins>
