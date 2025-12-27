@@ -138,34 +138,24 @@
 
         </plugins>
     </build> -->
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.2.5</version>
-            <configuration>
-                <argLine>
-                    --add-opens=java.base/java.lang=ALL-UNNAMED
-                    --add-opens=java.base/java.util=ALL-UNNAMED
-                    --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
-                    --add-opens=java.base/jdk.internal.reflect=ALL-UNNAMED
-                    --add-opens=java.base/sun.security.util=ALL-UNNAMED
-                    --add-opens=java.base/javax.crypto=ALL-UNNAMED
-                </argLine>
-            </configuration>
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.maven.surefire</groupId>
-                    <artifactId>surefire-testng</artifactId>
-                    <version>3.2.5</version>
-                </dependency>
-            </dependencies>
-        </plugin>
-    </plugins>
-</build>
+     <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-testng</artifactId>
+						<version>3.2.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>
